@@ -1,3 +1,5 @@
+from Diary.write_diary import write
+
 print('=========================')
 print(' Welcome to Your DIARY')
 print('=========================')
@@ -18,7 +20,8 @@ while True:
             choice = int(input('Enter your choice in number = '))
 
             if choice == 1:
-                pass
+                result = write()
+                print(result)
             
             elif choice == 2:
                 pass

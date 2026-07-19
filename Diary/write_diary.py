@@ -14,11 +14,7 @@ def get_next_id(diaries):
 
 def save_diary(lines, title):
 
-    file_path = (
-        Path(__file__).resolve().parent.parent
-        / "Data"
-        / "Data.json"
-    )
+    file_path = (Path(__file__).resolve().parent.parent/ "Data"/ "Data.json")
 
     # Create the Data folder if it does not exist.
     file_path.parent.mkdir(parents=True, exist_ok=True)
@@ -42,9 +38,7 @@ def save_diary(lines, title):
 
     content = "\n".join(lines)
 
-    current_time = datetime.now().strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     new_diary = {
         "ID": new_id,
@@ -58,14 +52,9 @@ def save_diary(lines, title):
 
     # Save the complete updated list.
     with file_path.open("w", encoding="utf-8") as file:
-        json.dump(
-            diaries,
-            file,
-            indent=2,
-            ensure_ascii=False,
-        )
+        json.dump(diaries,file,indent=2,ensure_ascii=False,)
 
-    return new_diary
+    return 'DONE'
 
 
 def write():
@@ -95,19 +84,14 @@ def write():
                 continue
 
             while True:
-                choice = input(
-                    "Enter YES to save or NO to cancel: "
-                ).strip().lower()
+                choice = input("Enter YES to save or NO to cancel: ").strip().lower()
 
                 if choice == "yes":
                     saved_diary = save_diary(lines, title)
 
-                    print(
-                        f'Your diary "{title}" '
-                        "has been added successfully."
-                    )
+                    print(f'Your diary {title} has been added successfully.')
 
-                    return saved_diary
+                    return 'Done'
 
                 elif choice == "no":
                     print("The diary has not been saved.")
