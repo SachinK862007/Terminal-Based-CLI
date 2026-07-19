@@ -2,72 +2,129 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-def appending(lin, tit):
-    new_diary = {}
 
-    date = datetime.now()
-    line = '\n'.join(lin)
-    title = tit
+def get_next_id(diaries):
 
-    file_path = Path('..\python\Terminal-Based-CLI\Data\Data.json')
+    if not diaries:
+        return 1
 
-    with file_path.open("r", encoding="utf-8") as f:
-        diaries = json.load(f)
-        new_id = len(diaries)+1 
-        
-
-    new_diary["ID"] = new_id
-    new_diary["Date"] = date
-    new_diary["Title"] = title
-    new_diary["Content"] = line
-
-    with file_path.open('w', encoding = "utf-8") as f :
-        json.dump(new_diary, f, indent=2)
+    highest_id = max(diary["ID"] for diary in diaries)
+    return highest_id + 1
 
 
+def save_diary(lines, title):
 
-    
+    file_path = (
+        Path(__file__).resolve().parent.parent
+        / "Data"
+        / "Data.json"
+    )
+
+    # Create the Data folder if it does not exist.
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Load existing diary entries.
+    if file_path.exists():
+        try:
+            with file_path.open("r", encoding="utf-8") as file:
+                diaries = json.load(file)
+
+            if not isinstance(diaries, list):
+                diaries = []
+
+        except json.JSONDecodeError:
+            diaries = []
+
+    else:
+        diaries = []
+
+    new_id = get_next_id(diaries)
+
+    content = "\n".join(lines)
+
+    current_time = datetime.now().strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+    new_diary = {
+        "ID": new_id,
+        "Date": current_time,
+        "Title": title,
+        "Content": content,
+    }
+
+    # Add the new dictionary to the existing diary list.
+    diaries.append(new_diary)
+
+    # Save the complete updated list.
+    with file_path.open("w", encoding="utf-8") as file:
+        json.dump(
+            diaries,
+            file,
+            indent=2,
+            ensure_ascii=False,
+        )
+
+    return new_diary
 
 
 def write():
+    
+
+    print(
+        '\nType "DONE" on a new line when you finish writing.'
+    )
+
+    title = input("Enter title: ").strip()
+
+    if not title:
+        print("The title cannot be empty.")
+        return None
+
+    print("Enter your diary:")
+
+    lines = []
 
     while True:
-        print('Please enter "DONE" in the new line after the complition of the Diary writing')
-        title = input("Enter Title : ")
-        print("Enter your Diary")
+        new_line = input()
 
-        line = []
-        
-        while True:
-            
-            new_line = input (" ")
-        
-            if new_line == 'DONE':
+        if new_line.strip().upper() == "DONE":
 
-                while True:
-                    choise = input("Enter (YES) if confirmed or (NO) not to save : ")
+            if not lines:
+                print("The diary content cannot be empty.")
+                continue
 
-                    if (choise == 'YES') or (choise == 'yes'):
-                        
-                        appending(line, title)
-                        print(f"Your diary {title} have been Added Successfully")
-                        return 'DONE'
+            while True:
+                choice = input(
+                    "Enter YES to save or NO to cancel: "
+                ).strip().lower()
 
-                    elif (choise == 'NO') or (choise == 'no'):
-                        print('The Diary have not been saved !')
-                        return None
+                if choice == "yes":
+                    saved_diary = save_diary(lines, title)
 
-                    else:
-                        print('Invalid Choise. Please enter the valid choice')
+                    print(
+                        f'Your diary "{title}" '
+                        "has been added successfully."
+                    )
 
-            line.append(new_line)
-                
+                    return saved_diary
 
-                      
+                elif choice == "no":
+                    print("The diary has not been saved.")
+                    return None
 
-        
+                else:
+                    print(
+                        "Invalid choice. Enter YES or NO."
+                    )
+
+        else:
+            lines.append(new_line)
 
 
-w = write()
+if __name__ == "__main__":
+    result = write()
 
-print(w)
+    if result is not None:
+        print("\nSaved diary:")
+        print(result)
