@@ -47,7 +47,7 @@ while True:
             
     elif choice == 2:
         while True:
-            print('\n1. Add expense')
+            print('\n1. Add expenses')
             print('2. View all expenses')
             print('3. Show monthly summary')
             print('4. Delete expense')
