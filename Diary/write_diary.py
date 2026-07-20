@@ -54,7 +54,7 @@ def save_diary(lines, title):
     with file_path.open("w", encoding="utf-8") as file:
         json.dump(diaries,file,indent=2,ensure_ascii=False,)
 
-    return 'DONE'
+    return 'DONE\n'
 
 
 def write():
@@ -91,7 +91,7 @@ def write():
 
                     print(f'Your diary {title} has been added successfully.')
 
-                    return 'Done'
+                    return 'Done\n'
 
                 elif choice == "no":
                     print("The diary has not been saved.")

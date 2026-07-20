@@ -1,0 +1,32 @@
+[
+  {
+    "ID": 1,
+    "Date": "2026-07-19 19:52:47",
+    "Title": "Day 1",
+    "Content": "test one pass"
+  },
+  {
+    "ID": 2,
+    "Date": "2026-07-19 19:53:29",
+    "Title": "Day 2",
+    "Content": "Testing to list all "
+  },
+  {
+    "ID": 3,
+    "Date": "2026-07-19 19:53:58",
+    "Title": "day 3",
+    "Content": "good to see you "
+  },
+  {
+    "ID": 4,
+    "Date": "2026-07-19 20:42:48",
+    "Title": "Program Day 1",
+    "Content": "i am very exited to \nlearn python today \nand i will build the projects from it "
+  },
+  {
+    "ID": 5,
+    "Date": "2026-07-19 21:26:40",
+    "Title": "Test 2",
+    "Content": "1'st module diary part is in a good progress\nand i have completed about 2 modules \nlike writing and reading the diary entry "
+  }
+]
