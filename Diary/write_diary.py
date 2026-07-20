@@ -84,23 +84,21 @@ def write():
                 continue
 
             while True:
-                choice = input("Enter YES to save or NO to cancel: ").strip().lower()
+                choice = input("\nEnter YES to save or NO to cancel: ").strip().lower()
 
                 if choice == "yes":
                     saved_diary = save_diary(lines, title)
 
-                    print(f'Your diary {title} has been added successfully.')
+                    print(f'\nYour diary {title} has been added successfully.')
 
                     return 'Done\n'
 
                 elif choice == "no":
-                    print("The diary has not been saved.")
+                    print("\nThe diary has not been saved.")
                     return None
 
                 else:
-                    print(
-                        "Invalid choice. Enter YES or NO."
-                    )
+                    print("\nInvalid choice. Enter YES or NO.")
 
         else:
             lines.append(new_line)

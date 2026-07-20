@@ -8,11 +8,13 @@ def read():
     with file_path.open("r", encoding = "utf-8") as f:
         content = json.load(f)
 
-        print("List of Diary Entry!")
+        print("\nList of Diary Entry!")
         for i in content:
             print(f"{i["ID"]} : {i["Title"]}")
+    
+    choise = int(input("\nEnter the choise to read the diary : "))
+    
 
-    choise = int(input("Enter the choise to read the diary : "))
 
     with file_path.open("r", encoding = "utf-8") as f:
         content = json.load(f)
@@ -36,7 +38,7 @@ def read():
         print("\nDiary not Found !\n")
          
     while True:
-        get_input = input("Enter Done if the reading is complete : ")
+        get_input = input("\nEnter Done if the reading is complete : ")
 
         if get_input.upper() == 'DONE':
             return 'DONE\n'
