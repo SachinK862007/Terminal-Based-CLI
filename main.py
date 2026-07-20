@@ -1,6 +1,7 @@
 from Diary.write_diary import write
 from Diary.read_diary import read
 from Diary.diary_list import lists
+from Diary.delete_diary import delete
 
 print('=========================')
 print(' Welcome to Your DIARY')
@@ -34,7 +35,8 @@ while True:
                 print(result3)
 
             elif choice == 4:
-                pass
+                result4 = delete()
+                print(result4)
 
             elif choice == 5:
                 break

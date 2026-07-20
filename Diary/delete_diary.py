@@ -36,11 +36,17 @@ def delete():
             with file_path.open("w", encoding = "utf-8") as f:
                 json.dump(data, f, indent = 2)
             found = True
-            print("Diary entry Deleted Successfully !")
+            print("\nDiary entry Deleted Successfully !\n")
             break
     
     if not found:
         print("\nDiary entry not Found\n")
+
+    while True:
+        entry = input("Enter 'DONE' to go back to menu : ")
+        
+        if entry.upper() == 'DONE':
+            return '\nDONE'
 
     
    
