@@ -3,6 +3,8 @@ from Diary.read_diary import read
 from Diary.diary_list import lists
 from Diary.delete_diary import delete
 from Expenses.add_expenses import entry
+from Expenses.view_expenses import view
+from Expenses.delete_expenses import remove
 
 print('=========================')
 print(' Welcome to Your DIARY')
@@ -51,8 +53,9 @@ while True:
             print('\n1. Add expenses')
             print('2. View all expenses')
             print('3. Show monthly summary')
-            print('4. Delete expense')
-            print('5. Back to main menu')
+            print('4. Show the entry')
+            print('5. Delete expense')
+            print('6. Back to main menu')
             choice = int(input('\nEnter your choice in number = '))
 
             if choice == 1:
@@ -60,7 +63,8 @@ while True:
                 print(result1)
 
             elif choice == 2:
-                pass
+                result2 = view()
+                print(result2)
 
             elif choice == 3:
                 pass
@@ -69,6 +73,10 @@ while True:
                 pass
             
             elif choice == 5:
+                result5 = remove()
+                print(result5)
+
+            elif choice == 6:
                 break
 
             else:

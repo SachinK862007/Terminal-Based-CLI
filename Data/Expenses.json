@@ -38,5 +38,17 @@
       ]
     ],
     "Total": 107
+  },
+  {
+    "ID": 3,
+    "Date": "21-07-26",
+    "Catogery": "movie",
+    "Expenses": [
+      [
+        400,
+        "popcorn"
+      ]
+    ],
+    "Total": 400
   }
 ]

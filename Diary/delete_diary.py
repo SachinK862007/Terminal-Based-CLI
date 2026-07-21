@@ -8,7 +8,7 @@ def delete():
     with file_path.open("r", encoding = "utf-8") as f:
         data = json.load(f)
 
-    print ("\n List of the Diary entry\n")
+    print("\n List of the Diary entry\n")
     for i in data:
         print(f"ID = {i['ID']} : {i['Title']}")
 
