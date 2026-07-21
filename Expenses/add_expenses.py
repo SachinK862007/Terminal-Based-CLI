@@ -2,12 +2,12 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-def get_id():
+def get_id(expenses):
     
     if not expenses:
         return 1
-
-    new_id = max(expenses["ID"] for expense in expenses)
+    
+    new_id = max(expense["ID"] for expense in expenses)
     return new_id + 1
 
 def save_expenses(catogery, enter, total):
@@ -32,7 +32,7 @@ def save_expenses(catogery, enter, total):
 
     new_id = get_id(expenses)
 
-    expense = "\n".join(enter)
+    
 
     date = datetime.now().strftime("%d-%m-%y")
 
@@ -40,7 +40,7 @@ def save_expenses(catogery, enter, total):
         "ID": new_id,
         "Date": date,
         "Catogery": catogery,
-        "Expenses": expense,
+        "Expenses": enter,
         "Total": total,
 
     }
@@ -61,7 +61,7 @@ def entry():
         print("The catogery cannot be empty.")
         return None
 
-    print("Enter your Expenses : ")
+    print("Enter your Expenses\n")
 
     enter = []
 
@@ -71,19 +71,19 @@ def entry():
 
         amount = int(input("Enter Amount : "))
         spent = input("Spent on : ")
-
+        enter.append((amount, spent))
         exp += amount
 
         while True:
 
-            enter = input("\nEnter (YES) to continue the Entry if not enter (NO)")
-
-            if enter.upper() == 'YES':
+            enters = input("\nEnter (YES) to continue the Entry if not enter (NO) : ")
+            
+            if enters.upper() == 'YES':
                 break
             
-            elif enter.upper() == 'NO':
+            elif enters.upper() == 'NO':
 
-                save_entry = save_expenses(catogery, enter, total)
+                save_expenses(catogery, enter, exp)
 
                 print("\nEntery completed !\n")
                 return 'DONE'
@@ -91,8 +91,7 @@ def entry():
             else:
                 print("Invalid entry !")
 
-        if entry.upper() == 'YES':
-            enter.append(amount, spent)
+        
 
 
 
