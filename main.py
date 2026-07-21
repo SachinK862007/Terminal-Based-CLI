@@ -2,6 +2,7 @@ from Diary.write_diary import write
 from Diary.read_diary import read
 from Diary.diary_list import lists
 from Diary.delete_diary import delete
+from Expenses.add_expenses import entry
 
 print('=========================')
 print(' Welcome to Your DIARY')
@@ -47,7 +48,7 @@ while True:
             
     elif choice == 2:
         while True:
-            print('\n1. Add expense')
+            print('\n1. Add expenses')
             print('2. View all expenses')
             print('3. Show monthly summary')
             print('4. Delete expense')
@@ -55,7 +56,8 @@ while True:
             choice = int(input('\nEnter your choice in number = '))
 
             if choice == 1:
-                pass
+                result1 = entry()
+                print(result1)
 
             elif choice == 2:
                 pass

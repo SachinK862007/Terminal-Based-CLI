@@ -60,9 +60,7 @@ def save_diary(lines, title):
 def write():
     
 
-    print(
-        '\nType "DONE" on a new line when you finish writing.'
-    )
+    print('\nType "DONE" on a new line when you finish writing.')
 
     title = input("Enter title: ").strip()
 

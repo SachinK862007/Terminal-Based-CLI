@@ -1,0 +1,42 @@
+[
+  {
+    "ID": 1,
+    "Date": "21-07-26",
+    "Catogery": "food",
+    "Expenses": [
+      [
+        50,
+        "chips"
+      ],
+      [
+        150,
+        "movie"
+      ]
+    ],
+    "Total": 200
+  },
+  {
+    "ID": 2,
+    "Date": "21-07-26",
+    "Catogery": "Grocery",
+    "Expenses": [
+      [
+        7,
+        "chilly"
+      ],
+      [
+        20,
+        "eggs"
+      ],
+      [
+        50,
+        "milk"
+      ],
+      [
+        30,
+        "cabbage"
+      ]
+    ],
+    "Total": 107
+  }
+]
