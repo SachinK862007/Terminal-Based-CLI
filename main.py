@@ -5,6 +5,8 @@ from Diary.delete_diary import delete
 from Expenses.add_expenses import entry
 from Expenses.view_expenses import view
 from Expenses.delete_expenses import remove
+from Expenses.entry_expenses import reading
+from Expenses.summary import summary
 
 print('=========================')
 print(' Welcome to Your DIARY')
@@ -67,10 +69,12 @@ while True:
                 print(result2)
 
             elif choice == 3:
-                pass
+                result3 = summary()
+                print(result3)
 
             elif choice == 4:
-                pass
+                result4 = reading()
+                print(result4)
             
             elif choice == 5:
                 result5 = remove()
